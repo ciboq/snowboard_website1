@@ -14,21 +14,25 @@ arr=data.records
     const snowboard_container = document.querySelector('.snowboard_container'); 
 
     data.records.forEach((album, index) => {
-    //   console.log(album); 
+      // console.log(album); 
 
       
 snowboard_container.innerHTML += `
 
-<div class="snowboard_container snowboardContainerModal snowboardContainer`+index+`" id=${album.id}>
+<div class="snowboard_container snowboardContainerModal snowboardContainer`+index+`">
+<div class="border">
 <img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}"/>
+</div>
 </div>
 
 `;
 
+// let snowboardPic = arr.filter((album) => {album.fields.snowboard_pic[0].thumbnails.large.url})
+// console.log(snowboardPic)
 
 anime({
        targets: '.snowboard',
-       translateX: '250px',
+       translateX: '220px',
        duration: 2000,
        easing: 'easeInOutExpo',
        loop: true,
@@ -41,18 +45,22 @@ anime({
 });
 
 let popup = document.querySelector(".popup"),
-button = document.querySelector(".snowboard_container");
+button = document.querySelector(".snowboard");
 // button.addEventListener("click", openPop);
 button.addEventListener("click", function(e){
 console.log(e.target.className)
 var b=e.target.className.split(' ')//获取的所有的class
+// console.log(b)
 var c=b[b.length - 1]
-var d=c.split('snowboardContainer')[1]//判断点击的是第几个
+// console.log(c)
+var d=c.split('snowboardContainer')[1]
+// console.log(d)
+//判断点击的是第几个
 //  然后获取的当前的数据，把数据拼进去就好了
 
 popup.innerHTML=`<div class="popcard">
-<h1>`+arr[d].fields.snowboard_name+d+`</h1>
-<h3>`+arr[d].fields.snowboard_description+d+`</h3>
+<h1>`+arr[d].fields.snowboard_name+`</h1>
+<h3>`+arr[d].fields.snowboard_description+`</h3>
 </div>`
 popup.style.display = "Block";
 });
