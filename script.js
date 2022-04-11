@@ -11,17 +11,23 @@ arr=data.records
 
     var progress = document.querySelector('.progress');
 
-    const snowboard_container = document.querySelector('.snowboard_container'); 
+    const snowboard_container = document.querySelector('.snowboard_container');
 
-    data.records.forEach((album, index) => {
-      // console.log(album); 
+
+    data.records
+
+    .slice(0,10)
+    
+    .forEach((album, index) => {
+      console.log(album); 
+    
 
       
 snowboard_container.innerHTML += `
 
-<div class="snowboard_container snowboardContainerModal snowboardContainer`+index+`">
-<div class="border">
-<img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}"/>
+<div class="snowboard_container">
+<div class="border snowboardContainer`+index+`">
+<img class="snowboard snowboardContainer`+index+`" src="${album.fields.snowboard_pic[0].thumbnails.large.url}"/>
 </div>
 </div>
 
@@ -33,7 +39,8 @@ snowboard_container.innerHTML += `
 anime({
        targets: '.snowboard',
        translateX: '220px',
-       duration: 2000,
+       duration: function() { return anime.random(1000,1400); },
+       delay: function() { return anime.random(300,600); },
        easing: 'easeInOutExpo',
        loop: true,
        direction: 'alternate',
@@ -45,15 +52,19 @@ anime({
 });
 
 let popup = document.querySelector(".popup"),
-    button = document.querySelector(".snowboard_container");
+button = document.querySelector(".snowboard_container");
+
+  
+ 
 button.addEventListener("click", function(e){
-// console.log(e.target.className)
-   var b=e.target.className.split(' ')//获取的所有的class
-   console.log(b)
-   var c=b[b.length - 1]
-   console.log(c)
-   var d=c.split('snowboardContainer')[1] 
-   console.log(d)
+var b=e.target.className.split(' ')//获取的所有的class
+console.log(b)
+var c=b[b.length - 1]
+console.log(c)
+var d=c.split('snowboardContainer')[1]
+console.log(d)
+//判断点击的是第几个
+//  然后获取的当前的数据，把数据拼进去就好了
 popup.innerHTML=`<div class="popcard">
 <h1>`+arr[d].fields.snowboard_name+`</h1>
 <h3>`+arr[d].fields.snowboard_description+`</h3>
