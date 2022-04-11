@@ -10,8 +10,16 @@ body{
   grid-column-gap: 2.5%;
 }
 
-.snowboard_container {
+.burton {
 display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+gap: 2%;
+padding-top: 2%;
+}
+
+.capita{
+  display:flex;
 flex-direction: row;
 flex-wrap: wrap;
 gap: 2%;

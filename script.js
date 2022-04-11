@@ -6,26 +6,26 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
   .then(res => res.json()) 
   .then(data => {
     console.log(data); 
-arr=data.records
+arr=data.records.filter(board => board.fields.snowboard_brand === 'Burton')
+console.log(arr)
 
 
     var progress = document.querySelector('.progress');
 
-    const snowboard_container = document.querySelector('.snowboard_container');
-
+    const snowboard_container_burton = document.querySelector('.burton');
 
     data.records
 
-    .slice(0,10)
+    .filter(board => board.fields.snowboard_brand === 'Burton')
     
     .forEach((album, index) => {
       console.log(album); 
     
 
       
-snowboard_container.innerHTML += `
+snowboard_container_burton.innerHTML += `
 
-<div class="snowboard_container">
+<div class="burton">
 <div class="border snowboardContainer`+index+`">
 <img class="snowboard snowboardContainer`+index+`" src="${album.fields.snowboard_pic[0].thumbnails.large.url}"/>
 </div>
