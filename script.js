@@ -45,39 +45,21 @@ anime({
 });
 
 let popup = document.querySelector(".popup"),
-button = document.querySelector(".snowboard");
-// button.addEventListener("click", openPop);
+    button = document.querySelector(".snowboard_container");
 button.addEventListener("click", function(e){
-console.log(e.target.className)
-var b=e.target.className.split(' ')//获取的所有的class
-// console.log(b)
-var c=b[b.length - 1]
-// console.log(c)
-var d=c.split('snowboardContainer')[1]
-// console.log(d)
-//判断点击的是第几个
-//  然后获取的当前的数据，把数据拼进去就好了
-
+// console.log(e.target.className)
+   var b=e.target.className.split(' ')//获取的所有的class
+   console.log(b)
+   var c=b[b.length - 1]
+   console.log(c)
+   var d=c.split('snowboardContainer')[1] 
+   console.log(d)
 popup.innerHTML=`<div class="popcard">
 <h1>`+arr[d].fields.snowboard_name+`</h1>
 <h3>`+arr[d].fields.snowboard_description+`</h3>
 </div>`
 popup.style.display = "Block";
 });
-
-// function openPop(){
-
-// var a= document.querySelector(".snowboardContainerModal"); 
-// var b=a.className.split(' ')//获取的所有的class
-// var c=b[b.length - 1]
-// var d=c.split('snowboardContainer')[1]//判断点击的是第几个
-// //  然后获取的当前的数据，把数据拼进去就好了
-// popup.innerHTML=`<div class="popcard">
-// <h1>`+arr[d].createdTime+d+`</h1>
-// <p>Click anywhere to close the message</p>
-// </div>`
-// popup.style.display = "Block";
-// }
 
 window.addEventListener("click", closePop);
 
